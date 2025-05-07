@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<string.h>
 
-
+//JULIAN
 void MenuVectores(){
     int opcion;    
         do {
@@ -27,6 +27,7 @@ void MenuVectores(){
         }
     } while (opcion != 0);
 }
+//WAIT
 void MenuReales(){
     int opcion;
     
@@ -54,7 +55,7 @@ void MenuReales(){
     } while (opcion != 0);
 
 }
-
+//JP y LELY
 void MenuMatrices(){
     
     int opcion;
@@ -82,7 +83,7 @@ void MenuMatrices(){
     } while (opcion != 0);
 
 }
-
+//HACHA
 void MenuEcuaciones(){
     
     int opcion;
