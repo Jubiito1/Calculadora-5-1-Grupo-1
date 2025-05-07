@@ -57,7 +57,7 @@ void MenuReales(){
 }
 //JP y LELY
 void MenuMatrices(){
-    
+    //alexis como hiciste el ingreso de datos???
     int opcion;
         do {
         printf("\nOpciones de Matrices:\n");
