@@ -87,12 +87,11 @@ void MenuReales(){
     }
     
     
-    int fila1,columna1;
+      int fila1,columna1;
     int fila2,columna2;
     int fila3,columna3;
     
     
-    do{
     printf("ingrese la cantidad de filas de la primer matriz:");
     scanf("%d",&fila1);
     printf("\ningrese la cantidad de columnas de la primer matriz:");
@@ -106,21 +105,25 @@ void MenuReales(){
     scanf("%d",&columna2);
     
     int matriz2 [fila2][columna2];
-    } while(columna1 == fila2)
-    
-    for(int i=0;i<fila;i++){
-        for(int j=0;j<columna;j++){
+
+    if(columna1 == fila2){
+    for(int i=0;i<fila1;i++){
+        for(int j=0;j<columna1;j++){
             printf("ingrese el numero correspondiente a la posicion [%d] [%d] de la primer matriz:",i+1,j+1);
             scanf("%d",&matriz1[i][j]);
         }
     }
     
-    for(int i=0;i<fila;i++){
-        for(int j=0;j<columna;j++){
+    for(int i=0;i<fila2;i++){
+        for(int j=0;j<columna2;j++){
             printf("ingrese el numero correspondiente a la posicion [%d] [%d] de la segunda matriz:",i+1,j+1);
             scanf("%d",&matriz2[i][j]);
         }
-    }*/
+    }
+    }
+    else{
+    printf("no se puede multiplicar");
+    break;*/
 void MenuMatrices(){
 
     int opcion;
