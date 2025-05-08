@@ -14,29 +14,9 @@ void MenuVectores(){
 
         switch (opcion) {
             case 1:
-                for(int i=0;i<fila1;i++){
-                    for(int j=0;j<columna1;i++){
-                        matriz3[fila3][columna3]= matriz1 [i][j] + matriz2 [i][j];
-                    }
-                }
-                for(int i=0;i<fila3;i++){
-                    for(int j=0;j<columna3;i++){
-                        printf("[%d]",matriz3[i][j]);
-                    }
-                }
-                break;
+            break;
             case 2:
-                for(int i=0;i<fila1;i++){
-                    for(int j=0;j<columna1;i++){
-                        matriz3[fila3][columna3]= matriz1 [i][j] - matriz2 [i][j];
-                    }
-                }
-                for(int i=0;i<fila3;i++){
-                    for(int j=0;j<columna3;i++){
-                        printf("[%d]",matriz3[i][j]);
-                    }
-                }
-                break;
+            break;
             case 0:
                 printf("Saliendo...\n");
                 break;
@@ -87,10 +67,28 @@ void MenuMatrices(){
 
         switch (opcion) {
             case 1:
-                
+         for(int i=0;i<fila1;i++){
+                    for(int j=0;j<columna1;i++){
+                        matriz3[fila3][columna3]= matriz1 [i][j] + matriz2 [i][j];
+                    }
+                }
+                for(int i=0;i<fila3;i++){
+                    for(int j=0;j<columna3;i++){
+                        printf("[%d]",matriz3[i][j]);
+                    }
+                }
                 break;
             case 2:
-                
+                for(int i=0;i<fila1;i++){
+                    for(int j=0;j<columna1;i++){
+                        matriz3[fila3][columna3]= matriz1 [i][j] - matriz2 [i][j];
+                    }
+                }
+                for(int i=0;i<fila3;i++){
+                    for(int j=0;j<columna3;i++){
+                        printf("[%d]",matriz3[i][j]);
+                    }
+                }
                 break;
             case 0:
                 printf("Saliendo...\n");
