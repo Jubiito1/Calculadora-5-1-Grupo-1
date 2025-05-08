@@ -54,8 +54,75 @@ void MenuReales(){
 
 }
 //JP y LELY
+/*  int fila,columna;
+    
+    printf("ingrese la cantidad de filas:");
+    scanf("%d",&fila);
+    printf("\ningrese la cantidad de columnas:");
+    scanf("%d",&columna);
+    
+    int matriz[fila][columna];
+    
+    for(int i=0;i<fila;i++){
+        for(int j=0;j<columna;j++){
+            printf("ingrese el numero correspondiente a la posicion [%d] [%d]:",i+1,j+1);
+            scanf("%d",&matriz[i][j]);
+        }
+    }
+
+    int tamano;
+
+    printf("ingrese el tamano de las matrices:");
+    scanf("%d",&tamano);
+    
+    int matriz1[tamano][tamano];
+    int matriz2[tamano][tamano];
+    int matriz3[tamano][tamano];
+    
+    for(int i=0;i<fila;i++){
+        for(int j=0;j<tamano;j++){
+            printf("ingrese el numero correspondiente a la posicion [%d] [%d]:",i+1,j+1);
+            scanf("%d",&matriz[i][j]);
+        }
+    }
+    
+    
+    int fila1,columna1;
+    int fila2,columna2;
+    int fila3,columna3;
+    
+    
+    do{
+    printf("ingrese la cantidad de filas de la primer matriz:");
+    scanf("%d",&fila1);
+    printf("\ningrese la cantidad de columnas de la primer matriz:");
+    scanf("%d",&columna1);
+    
+    int matriz1[fila1][columna1];
+    
+    printf("ingrese la cantidad de filas de la segunda matriz:");
+    scanf("%d",&fila2);
+    printf("\ningrese la cantidad de columnas de la segunda matriz:");
+    scanf("%d",&columna2);
+    
+    int matriz2 [fila2][columna2];
+    } while(columna1 == fila2)
+    
+    for(int i=0;i<fila;i++){
+        for(int j=0;j<columna;j++){
+            printf("ingrese el numero correspondiente a la posicion [%d] [%d] de la primer matriz:",i+1,j+1);
+            scanf("%d",&matriz1[i][j]);
+        }
+    }
+    
+    for(int i=0;i<fila;i++){
+        for(int j=0;j<columna;j++){
+            printf("ingrese el numero correspondiente a la posicion [%d] [%d] de la segunda matriz:",i+1,j+1);
+            scanf("%d",&matriz2[i][j]);
+        }
+    }*/
 void MenuMatrices(){
-    //alexis como hiciste el ingreso de datos???
+
     int opcion;
         do {
         printf("\nOpciones de Matrices:\n");
