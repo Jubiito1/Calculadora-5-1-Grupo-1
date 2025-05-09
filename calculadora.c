@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-#include <math.io>
+#include <math.h>
 
 //JULIAN
 void MenuVectores(){
