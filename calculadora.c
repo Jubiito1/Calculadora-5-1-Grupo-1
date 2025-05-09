@@ -170,12 +170,61 @@ void ingresoNum(float *a,float *b){
     printf("no se puede multiplicar");
     break;*/
     
-    
+void ingrsarTamanoMatrices(int tamano, float matriz[tamano][tamano], int numeroMatriz) {
+    for (int i = 0; i < tamano; i++) {
+        for (int j = 0; j < tamano; j++) {
+            printf("Ingrese el valor correspondiente a la posición [%d][%d] de la matriz %d: ", i + 1, j + 1, numeroMatriz);
+            scanf("%f", &matriz[i][j]);
+        }
+    }
+}
 void ingresarMatriz(float *matriz, int filas, int columnas) {
     for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
             printf("ingrese el valor en [%d][%d]: ", i + 1, j + 1);
             scanf("%f", (matriz + i * columnas + j));
+        }
+    }
+}
+void sumaMatrices() {
+    int tamano;
+    
+    printf("Ingrese el tamano de las matrices: ");
+    scanf("%d", &tamano);
+
+    float matriz1[tamano][tamano];
+    float matriz2[tamano][tamano];
+    float matrizResultado[tamano][tamano];
+
+    ingrsarTamanoMatrices(tamano, matriz1, 1);
+    ingrsarTamanoMatrices(tamano, matriz2, 2);
+
+    printf("resultado:");
+    for (int i = 0; i < tamano; i++) {
+        for (int j = 0; j < tamano; j++) {
+            matrizResultado[i][j] = matriz1[i][j] + matriz2[i][j];
+            printf("%.2f ", matrizResultado[i][j]);
+        }
+    }
+}
+void restaMatrices() {
+    int tamano;
+    
+    printf("Ingrese el tamano de las matrices: ");
+    scanf("%d", &tamano);
+
+    float matriz1[tamano][tamano];
+    float matriz2[tamano][tamano];
+    float matrizResultado[tamano][tamano];
+
+    ingrsarTamanoMatrices(tamano, matriz1, 1);
+    ingrsarTamanoMatrices(tamano, matriz2, 2);
+
+    printf("resultado:");
+    for (int i = 0; i < tamano; i++) {
+        for (int j = 0; j < tamano; j++) {
+            matrizResultado[i][j] = matriz1[i][j] - matriz2[i][j];
+            printf("%.2f ", matrizResultado[i][j]);
         }
     }
 }
@@ -268,8 +317,8 @@ void MenuMatrices(){
     int opcion;
         do {
         printf("\nOpciones de Matrices:\n");
-        printf("1. \n");
-        printf("2.\n");
+        printf("1.Suma de matrices\n");
+        printf("2.Resta de matrices\n");
         printf("3.\n");
         printf("4.\n");
         printf("5.Multiplicar matriz por un escalar\n");
@@ -282,10 +331,10 @@ void MenuMatrices(){
 
         switch (opcion) {
             case 1:
-
+                    sumaMatrices();
                 break;
             case 2:
-
+                    restaMatrices();
                 break;
             
             case 5: 
