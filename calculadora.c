@@ -30,20 +30,53 @@ void MenuVectores(){
 void MenuReales(){
     int opcion;
     
+       void ingresoNum(float *a, float *b);
+ float num1,num2;
+    
         do {
         printf("\nOpciones con Numeros reales:\n");
-        printf("1. \n");
-        printf("2.\n");
+        printf("1.Suma \n");
+        printf("2.Resta\n");
+        printf("3.Multiplicacion\n");
+        printf("4.División\n");
+        printf("5.Potencia\n");
+        printf("6.Raiz\n");
         printf("0. Salir\n");
         printf("Elija una opcion: ");
         scanf("%d", &opcion);
 
         switch (opcion) {
             case 1:
-                
+                ingresoNum(&num1,&num2);
+                printf("%.2f + %.2f = %.2f\n ",num1,num2,num1+num2);
                 break;
             case 2:
-                
+                ingresoNum(&num1,&num2);
+                printf("%.2f - %.2f = %.2f\n ",num1,num2,num1-num2);
+                break;
+            case 3:
+                ingresoNum(&num1,&num2);
+                printf("%.2f * %.2f = %.2f\n ",num1,num2,num1*num2);
+                break;
+            case 4:
+                ingresoNum(&num1,&num2);
+                printf("%.2f / %.2f = %.2f\n ",num1,num2,num1/num2);
+                break;
+            case 5:
+                printf("Ingrese el numero que desea potenciar:");
+                scanf("%f",&num1);
+                printf("Ingrese por el que desea potenciar %.2f : ",num1);
+                scanf("%f",&num2);
+                printf("%.2f ^ %.2f = %.2f\n", num1, num2, pow(num1, num2));
+
+                break;
+            case 6:
+            int raiz;
+                printf("Ingrese el numero del que desea saber la Raiz: ");
+                scanf("%f",&num1);
+                printf("Ingrese cual es la raiz de %.2f que desea calcular: ",num1);
+                scanf("%d",&raiz);
+                printf("La raiz %d de %.2f =  %.2f ",raiz,num1,pow(num1,(1.0/raiz)));
                 break;
             case 0:
                 printf("Saliendo...\n");
@@ -52,6 +85,17 @@ void MenuReales(){
                 printf("Opcion no valida.\n");
         }
     } while (opcion != 0);
+    
+    
+}
+
+void ingresoNum(float *a,float *b){
+    float num1,num2;
+  printf("Ingrese el primer numero de la operacion:");
+  scanf("%f",a);
+  printf("Ingrese el segundo numero de la operacion:");
+  scanf("%f",b);
+}
 
 }
 //JP y LELY
