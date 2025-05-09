@@ -124,6 +124,100 @@ void MenuReales(){
     else{
     printf("no se puede multiplicar");
     break;*/
+    
+    
+void ingresarMatriz(float *matriz, int filas, int columnas) {
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            printf("ingrese el valor en [%d][%d]: ", i + 1, j + 1);
+            scanf("%f", (matriz + i * columnas + j));
+        }
+    }
+}
+void multiplicarPorEscalar() {
+    int filas, columnas;
+    float escalar;
+
+    printf("ingrese filas y columnas: ");
+    scanf("%d %d", &filas, &columnas);
+
+    float matriz[filas][columnas];  
+
+    ingresarMatriz((float *)matriz, filas, columnas);
+    /*convertí la matriz 2D a un puntero, pasala a la función ingresarMatriz y 
+    dentro de esa función manejala como si fuera 2D usando punteros*/
+
+    printf("ingrese el escalar: ");
+    scanf("%f", &escalar);
+
+    printf("resultado:\n");
+    for (int i = 0; i < filas; i++) {
+        for (int j = 0; j < columnas; j++) {
+            float resultado = matriz[i][j] * escalar;
+            printf("%.2f ", resultado);
+        }
+        printf("\n");
+    }
+    
+}
+void obtenerSubmatriz(float *matriz, float *submatriz, int n, int filaExcluir, int colExcluir) {
+    int subi = 0;
+    for (int i = 0; i < n; i++) {
+        if (i == filaExcluir) continue;
+        int subj = 0;
+        for (int j = 0; j < n; j++) {
+            if (j == colExcluir) continue;
+            *(submatriz + subi * (n - 1) + subj) = *(matriz + i * n + j);
+            subj++;
+        }
+        subi++;
+    }
+}
+
+
+float determinante(float *matriz, int n) {
+    if (n == 1) {
+        return *matriz;
+    }
+
+    if (n == 2) {
+        return (*(matriz) * *(matriz + 3)) - (*(matriz + 1) * *(matriz + 2));
+    }
+
+    float det = 0.0;
+    for (int j = 0; j < n; j++) {
+        float submatriz[(n - 1) * (n - 1)];
+        obtenerSubmatriz(matriz, submatriz, n, 0, j);
+
+        float signo = (j % 2 == 0) ? 1 : -1;
+        det += signo * (*(matriz + j)) * determinante(submatriz, n - 1);
+    }
+
+    return det;
+}
+
+
+void calcularDeterminante() {
+    int filas, columnas;
+    printf("ingrese cantidad de filas: ");
+    scanf("%d", &filas);
+    printf("ingrese cantidad de columnas: ");
+    scanf("%d", &columnas);
+
+    if (filas != columnas) {
+        printf("error: el determinante solo se puede calcular en matrices cuadradas\n");
+        return;
+    }
+
+    int n = filas;
+    float matriz[n][n];
+    ingresarMatriz((float *)matriz, n, n);
+    /*converti la matriz 2D a un puntero, pasala a la funcion ingresarMatriz y 
+    dentro de esa función manejala como si fuera 2D usando punteros*/
+    float det = determinante((float *)matriz, n);
+    printf("el determinante es: %.2f\n", det);
+}
+
 void MenuMatrices(){
 
     int opcion;
@@ -131,35 +225,30 @@ void MenuMatrices(){
         printf("\nOpciones de Matrices:\n");
         printf("1. \n");
         printf("2.\n");
+        printf("3.\n");
+        printf("4.\n");
+        printf("5.Multiplicar matriz por un escalar\n");
+        printf("6.calcular la determinante de una matriz\n");
+        printf("7.\n");
+        printf("8.\n");
         printf("0. Salir\n");
         printf("Elija una opcion: ");
         scanf("%d", &opcion);
 
         switch (opcion) {
             case 1:
-         for(int i=0;i<fila1;i++){
-                    for(int j=0;j<columna1;i++){
-                        matriz3[fila3][columna3]= matriz1 [i][j] + matriz2 [i][j];
-                    }
-                }
-                for(int i=0;i<fila3;i++){
-                    for(int j=0;j<columna3;i++){
-                        printf("[%d]",matriz3[i][j]);
-                    }
-                }
+
                 break;
             case 2:
-                for(int i=0;i<fila1;i++){
-                    for(int j=0;j<columna1;i++){
-                        matriz3[fila3][columna3]= matriz1 [i][j] - matriz2 [i][j];
-                    }
-                }
-                for(int i=0;i<fila3;i++){
-                    for(int j=0;j<columna3;i++){
-                        printf("[%d]",matriz3[i][j]);
-                    }
-                }
+
                 break;
+            
+            case 5: 
+                    multiplicarPorEscalar();
+                    break;
+            case 6:
+                    calcularDeterminante();
+                    break;
             case 0:
                 printf("Saliendo...\n");
                 break;
