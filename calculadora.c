@@ -252,7 +252,7 @@ void multiplicarMatrizVector() {
     }
     printf("Resultado:");
     for (int i = 0; i < filas; i++) {
-        printf("%.2f\n", resultado[i]);
+        printf("%.2f ", resultado[i]);
     }
 }
 void obtenerSubmatriz(float *matriz, float *submatriz, int n, int filaExcluir, int colExcluir) {
@@ -320,12 +320,12 @@ void MenuMatrices(){
         printf("\nOpciones de Matrices:\n");
         printf("1.Suma de matrices\n");
         printf("2.Resta de matrices\n");
-        printf("3.\n");
-        printf("4.\n");
-        printf("5.Multiplicar matriz por un escalar\n");
+        printf("3.Multiplicar matriz por un escalar\n");
+        printf("4.Multiplicacion de matrices\n");
+        printf("5.Multiplicacion de matriz por vector\n");
         printf("6.calcular la determinante de una matriz\n");
-        printf("7.\n");
-        printf("8.\n");
+        printf("7.La inversa de una matriz\n");
+        printf("8.Division de matrices\n");
         printf("0. Salir\n");
         printf("Elija una opcion: ");
         scanf("%d", &opcion);
@@ -337,10 +337,16 @@ void MenuMatrices(){
             case 2:
                     restaMatrices();
                 break;
-            
-            case 5: 
+            case 3:
                     multiplicarPorEscalar();
-                    break;
+                break;
+            case 4:
+                    multiplicarMatrices();
+                break;
+            case 5: 
+                    multiplicarMatrizVector();
+                break;             
+                    
             case 6:
                     calcularDeterminante();
                     break;
