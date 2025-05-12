@@ -99,85 +99,7 @@ void ingresoNum(float *a,float *b){
 
 }
 //JP y LELY
-/*  int fila,columna;
     
-    printf("ingrese la cantidad de filas:");
-    scanf("%d",&fila);
-    printf("\ningrese la cantidad de columnas:");
-    scanf("%d",&columna);
-    
-    int matriz[fila][columna];
-    
-    for(int i=0;i<fila;i++){
-        for(int j=0;j<columna;j++){
-            printf("ingrese el numero correspondiente a la posicion [%d] [%d]:",i+1,j+1);
-            scanf("%d",&matriz[i][j]);
-        }
-    }
-
-    int tamano;
-
-    printf("ingrese el tamano de las matrices:");
-    scanf("%d",&tamano);
-    
-    int matriz1[tamano][tamano];
-    int matriz2[tamano][tamano];
-    int matriz3[tamano][tamano];
-    
-    for(int i=0;i<fila;i++){
-        for(int j=0;j<tamano;j++){
-            printf("ingrese el numero correspondiente a la posicion [%d] [%d]:",i+1,j+1);
-            scanf("%d",&matriz[i][j]);
-        }
-    }
-    
-    
-      int fila1,columna1;
-    int fila2,columna2;
-    int fila3,columna3;
-    
-    
-    printf("ingrese la cantidad de filas de la primer matriz:");
-    scanf("%d",&fila1);
-    printf("\ningrese la cantidad de columnas de la primer matriz:");
-    scanf("%d",&columna1);
-    
-    int matriz1[fila1][columna1];
-    
-    printf("ingrese la cantidad de filas de la segunda matriz:");
-    scanf("%d",&fila2);
-    printf("\ningrese la cantidad de columnas de la segunda matriz:");
-    scanf("%d",&columna2);
-    
-    int matriz2 [fila2][columna2];
-
-    if(columna1 == fila2){
-    for(int i=0;i<fila1;i++){
-        for(int j=0;j<columna1;j++){
-            printf("ingrese el numero correspondiente a la posicion [%d] [%d] de la primer matriz:",i+1,j+1);
-            scanf("%d",&matriz1[i][j]);
-        }
-    }
-    
-    for(int i=0;i<fila2;i++){
-        for(int j=0;j<columna2;j++){
-            printf("ingrese el numero correspondiente a la posicion [%d] [%d] de la segunda matriz:",i+1,j+1);
-            scanf("%d",&matriz2[i][j]);
-        }
-    }
-    }
-    else{
-    printf("no se puede multiplicar");
-    break;*/
-    
-void ingrsarTamanoMatrices(int tamano, float matriz[tamano][tamano], int numeroMatriz) {
-    for (int i = 0; i < tamano; i++) {
-        for (int j = 0; j < tamano; j++) {
-            printf("Ingrese el valor correspondiente a la posición [%d][%d] de la matriz %d: ", i + 1, j + 1, numeroMatriz);
-            scanf("%f", &matriz[i][j]);
-        }
-    }
-}
 void ingresarMatriz(float *matriz, int filas, int columnas) {
     for (int i = 0; i < filas; i++) {
         for (int j = 0; j < columnas; j++) {
@@ -217,8 +139,8 @@ void restaMatrices() {
     float matriz2[tamano][tamano];
     float matrizResultado[tamano][tamano];
 
-    ingrsarTamanoMatrices(tamano, matriz1, 1);
-    ingrsarTamanoMatrices(tamano, matriz2, 2);
+    ingrsarMatriz((float *)matriz, filas, columnas);
+    ingrsarMatriz(tamano, matriz2, 2);
 
     printf("resultado:");
     for (int i = 0; i < tamano; i++) {
@@ -253,6 +175,85 @@ void multiplicarPorEscalar() {
         printf("\n");
     }
     
+}
+void multiplicarMatrices() {
+    int filas1, columnas1;
+    int filas2, columnas2;
+
+    do{
+    printf("Ingrese el numero de filas de la primera matriz: ");
+    scanf("%d", &filas1);
+    printf("Ingrese el numero de columnas de la primera matriz: ");
+    scanf("%d", &columnas1);
+
+    printf("Ingrese el numero de filas de la segunda matriz: ");
+    scanf("%d", &filas2);
+    printf("Ingrese el numero de columnas de la segunda matriz: ");
+    scanf("%d", &columnas2);
+
+    if (columnas1 != filas2) {
+        printf("No se pueden multiplicar las matrices porque el numero de columnas de la primera matriz no coincide con el numero de filas de la segunda matriz.\n");
+        return;
+    }
+    }while(columnas1 != filas2)
+        
+    float matriz1[filas1][columnas1];
+    float matriz2[filas2][columnas2];
+    float resultado[filas1][columnas2];
+
+    printf("Ingrese los valores de la primera matriz:\n");
+    ingresarMatriz((float *)matriz1, filas1, columnas1);
+
+    printf("Ingrese los valores de la segunda matriz:\n");
+    ingresarMatriz((float *)matriz2, filas2, columnas2);
+
+    for (int i = 0; i < filas1; i++) {
+        for (int j = 0; j < columnas2; j++) {
+            resultado[i][j] = 0;
+            for (int k = 0; k < columnas1; k++) {
+                resultado[i][j] += matriz1[i][k] * matriz2[k][j];
+            }
+        }
+    }
+
+    printf("Resultado:");
+    for (int i = 0; i < filas1; i++) {
+        for (int j = 0; j < columnas2; j++) {
+            printf("%.2f ", resultado[i][j]);
+        }
+    }
+}
+void multiplicarMatrizVector() {
+    int filas, columnas;
+
+    printf("Ingrese el numero de filas de la matriz: ");
+    scanf("%d", &filas);
+    printf("Ingrese el numero de columnas de la matriz: ");
+    scanf("%d", &columnas);
+
+    float matriz[filas][columnas];
+    float vector[columnas];
+    float resultado[filas];
+
+    printf("Ingrese los valores de la matriz:\n");
+    ingresarMatriz((float *)matriz, filas, columnas);
+
+    printf("Ingrese los valores del vector :\n", columnas);
+    for (int i = 0; i < columnas; i++) {
+        printf("Ingrese el valor en la posicion [%d]: ", i + 1);
+        scanf("%f", &vector[i]);
+    }
+
+    for (int i = 0; i < filas; i++) {
+        resultado[i] = 0;
+        for (int j = 0; j < columnas; j++) {
+            resultado[i] += matriz[i][j] * vector[j];
+        }
+    }
+    printf("Resultado:");
+    for (int i = 0; i < filas; i++) {
+        printf("%.2f\n", resultado[i]);
+    }
 }
 void obtenerSubmatriz(float *matriz, float *submatriz, int n, int filaExcluir, int colExcluir) {
     int subi = 0;
