@@ -1,23 +1,166 @@
-#include<stdio.h>
-#include<string.h>
+#include <stdio.h>
+#include <string.h>
 #include <math.h>
+#include <stdbool.h>
 
 //JULIAN
-void MenuVectores(){
-    int opcion;    
-        do {
+void ingresoVector(float *vector, int tamano) {
+    for (int i = 0; i < tamano; i++) {
+        printf("ingrese el valor en [%d]: ", i + 1);
+        scanf("%f", (vector + i));
+    }
+}
+
+void sumaVectores() {
+    
+    int tamano, i;
+
+    printf("Ingrese el tamano de los vectores:  ");
+    scanf("%d",&tamano);
+
+    float v1[tamano];
+    float v2[tamano];
+    float resultado[tamano];
+
+    ingresoVector(v1, tamano);
+    ingresoVector(v2, tamano);
+    
+    for(i = 0; i < tamano; i++) {
+        resultado[i] = v1[i] + v2[i];
+    }
+    
+    printf("el resultado es:\n");
+    for(i=0; i<tamano; i++){
+        printf("%.2f  ", resultado[i]);
+    }
+}
+
+void restaVectores() {
+    
+    int tamano, i;
+
+    printf("Ingrese el tamano de los vectores:  ");
+    scanf("%d",&tamano);
+
+    float v1[tamano];
+    float v2[tamano];
+    float resultado[tamano];
+
+    ingresoVector(v1, tamano);
+    ingresoVector(v2, tamano);
+    
+    for(i = 0; i < tamano; i++) {
+        resultado[i] = v1[i] - v2[i];
+    }
+    
+    printf("el resultado es:\n");
+    for(i=0; i<tamano; i++){
+        printf("%.2f  ", resultado[i]);
+    }
+}
+
+void escalarVector() {
+    
+    int tamano, i;
+    float escalar;
+
+    printf("Ingrese el tamano del vector:  ");
+    scanf("%d",&tamano);
+
+    float v1[tamano];
+    float resultado[tamano];
+
+    ingresoVector(v1, tamano);
+    
+    printf("Ingrese el numero escalar a multiplicar: ");
+    scanf("%f",&escalar);
+    
+    for(i = 0; i < tamano; i++) {
+        resultado[i] = v1[i] * escalar;
+    }
+    
+    printf("el resultado es:\n");
+    for(i=0; i<tamano; i++){
+        printf("%.2f  ", resultado[i]);
+    }
+}
+
+void productoEscalar() {
+    
+    int tamano, i;
+
+    printf("Ingrese el tamano de los vectores:  ");
+    scanf("%d",&tamano);
+
+    float v1[tamano];
+    float v2[tamano];
+    float auxiliar[tamano];
+    float resultado;
+
+    ingresoVector(v1, tamano);
+    ingresoVector(v2, tamano);
+    
+    for(i = 0; i < tamano; i++) {
+        auxiliar[i] = v1[i] * v2[i];
+        resultado += auxiliar[i];
+    }
+    
+    printf("el resultado es: %.2f", resultado);
+}
+
+void productoVectorial() {
+    
+    int i;
+    bool flag=false;
+
+    float v1[3];
+    float v2[3];
+    float resultado[3];
+
+    ingresoVector(v1, 3);
+    ingresoVector(v2, 3);
+    
+    resultado[0] = v1[1] * v2[2] - v2[1] * v1[2];
+    resultado[1] = v1[2] * v2[0] - v2[2] * v1[0];
+    resultado[2] = v1[0] * v2[1] - v2[0] * v1[1];
+    
+    printf("el resultado es:\n");
+    for(i=0; i<3; i++){
+        printf("%.2f  ", resultado[i]);
+    }
+}
+
+
+void MenuVectores()
+{
+    int opcion;
+    do {
         printf("\nOpciones de operaciones con Vectores:\n");
-        printf("1.Suma \n");
-        printf("2.Resta\n");
+        printf("1.Suma.\n");
+        printf("2.Resta.\n");
+        printf("3.Multiplicacion de escalar por vector.\n");
+        printf("4.Producto escalar.\n");
+        printf("5.Producto vectorial.\n");
         printf("0. Salir\n");
         printf("Elija una opcion: ");
         scanf("%d", &opcion);
-
+        
         switch (opcion) {
             case 1:
-            break;
+                sumaVectores();
+                break;
             case 2:
-            break;
+                restaVectores();
+                break;
+            case 3:
+                escalarVector();
+                break;
+            case 4:
+                productoEscalar();
+                break;
+            case 5:
+                productoVectorial();
+                break;
             case 0:
                 printf("Saliendo...\n");
                 break;
