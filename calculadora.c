@@ -97,7 +97,7 @@ void ingresoNum(float *a,float *b){
   scanf("%f",b);
 }
 
-}
+
 //JP y LELY
     
 void ingresarMatriz(float *matriz, int filas, int columnas) {
