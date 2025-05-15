@@ -360,6 +360,7 @@ void multiplicarMatrices() {
         }
     }
 }
+
 void multiplicarMatrizVector() {
     int filas, columnas;
 
@@ -391,6 +392,7 @@ void multiplicarMatrizVector() {
     for (int i = 0; i < filas; i++) {
         printf("%.2f ", resultado[i]);
     }
+}
 void obtenerSubmatriz(float *matriz, float *submatriz, int n, int filaExcluir, int colExcluir) {
     int subi = 0;
     for (int i = 0; i < n; i++) {
