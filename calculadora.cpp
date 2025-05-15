@@ -409,7 +409,7 @@ float resolverEcuaciones2y3() {
     int filas, columnas;
     do {
 	
-		printf("ingrese si el sistema el numero de incognitas(2 o 3): ");
+	printf("ingrese si el sistema el numero de incognitas(2 o 3): ");
     	scanf("%d", &filas);
     
 	}while(filas!=2 && filas!=3);
@@ -420,24 +420,24 @@ float resolverEcuaciones2y3() {
 		float matriz[2][2];
     	
     	
-    	ingresarMatriz2x2(matriz,indep);
+    		ingresarMatriz2x2(matriz,indep);
    		
 		float det = determinante2x2(matriz);
     	
 		if (det == 0) 
 		{
-        printf("El sistema no tiene solución única.\n");
+       			printf("El sistema no tiene solución única.\n");
         
-    	}
+    		}
     	
 		float mX[2][2] = { indep[0], matriz[0][1],  indep[1], matriz[1][1]  };
-    	float mY[2][2] = { matriz[0][0], indep[0],  matriz[1][0], indep[1]  };
+    		float mY[2][2] = { matriz[0][0], indep[0],  matriz[1][0], indep[1]  };
 
-    	float x = determinante2x2(mX) / det;
-    	float y = determinante2x2(mY) / det;
+    		float x = determinante2x2(mX) / det;
+    		float y = determinante2x2(mY) / det;
     	
-    	printf("x es: %f\n",x);
-    	printf("y es: %f\n",y);
+    		printf("x es: %f\n",x);
+    		printf("y es: %f\n",y);
     	
 	}
 	
@@ -452,33 +452,32 @@ float resolverEcuaciones2y3() {
 		float det = determinante3x3(matriz);
 		if (det == 0) 
 		{
-        printf("El sistema no tiene solución única.\n");
-    	}
+        		printf("El sistema no tiene solución única.\n");
+    		}
     	
-    	float mX[3][3], mY[3][3], mZ[3][3];
-    	for (int i = 0; i < 3; i++)
+    		float mX[3][3], mY[3][3], mZ[3][3];
+    		for (int i = 0; i < 3; i++)
 		{
-        	mX[i][0]= indep[i];
-        	mX[i][1]= matriz[i][1];
-        	mX[i][2]= matriz[i][2];
+        		mX[i][0]= indep[i];
+        		mX[i][1]= matriz[i][1];
+        		mX[i][2]= matriz[i][2];
         	
 			mY[i][0]= matriz[i][0];
-        	mY[i][1]= indep[i];
-        	mY[i][2]= matriz[i][2];
+        		mY[i][1]= indep[i];
+        		mY[i][2]= matriz[i][2];
        		
 			mZ[i][0]= matriz[i][0];
-        	mZ[i][1]= matriz[i][1];
-        	mZ[i][2]= indep[i];
-    	}
+        		mZ[i][1]= matriz[i][1];
+        		mZ[i][2]= indep[i];
+    		}
     	
 		float x=determinante3x3(mX)/det;
-    	float y=determinante3x3(mY)/det;
-    	float z=determinante3x3(mZ)/det;
+    		float y=determinante3x3(mY)/det;
+    		float z=determinante3x3(mZ)/det;
     
 		printf("X = %.f\n", x);
-    	printf("Y = %.f\n", y);
-    	printf("Z = %.f\n", z);
-
+    		printf("Y = %.f\n", y);
+    		printf("Z = %.f\n", z);
 		
 	}
 }
