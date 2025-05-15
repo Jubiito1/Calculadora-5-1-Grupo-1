@@ -118,8 +118,8 @@ void sumaMatrices() {
     float matriz2[tamano][tamano];
     float matrizResultado[tamano][tamano];
 
-    ingrsarTamanoMatrices(tamano, matriz1, 1);
-    ingrsarTamanoMatrices(tamano, matriz2, 2);
+    ingresarMatriz((float *)matriz1, tamano, tamano);
+    ingresarMatriz((float *)matriz2, tamano, tamano);
 
     printf("resultado:");
     for (int i = 0; i < tamano; i++) {
@@ -139,8 +139,8 @@ void restaMatrices() {
     float matriz2[tamano][tamano];
     float matrizResultado[tamano][tamano];
 
-    ingrsarMatriz((float *)matriz, filas, columnas);
-    ingrsarMatriz(tamano, matriz2, 2);
+    ingresarMatriz((float *)matriz1, tamano, tamano);
+    ingresarMatriz((float *)matriz2, tamano, tamano);
 
     printf("resultado:");
     for (int i = 0; i < tamano; i++) {
