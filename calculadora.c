@@ -193,9 +193,9 @@ void multiplicarMatrices() {
 
     if (columnas1 != filas2) {
         printf("No se pueden multiplicar las matrices porque el numero de columnas de la primera matriz no coincide con el numero de filas de la segunda matriz.\n");
-        return;
     }
-    }while(columnas1 != filas2)
+    }
+    while(columnas1 != filas2);
         
     float matriz1[filas1][columnas1];
     float matriz2[filas2][columnas2];
