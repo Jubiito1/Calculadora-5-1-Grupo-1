@@ -27,10 +27,16 @@ void MenuVectores(){
     } while (opcion != 0);
 }
 //WAIT
+void ingresoNum(float *a,float *b){
+    float num1,num2;
+  printf("Ingrese el primer numero de la operacion:");
+  scanf("%f",a);
+  printf("Ingrese el segundo numero de la operacion:");
+  scanf("%f",b);
+}
 void MenuReales(){
     int opcion;
-    
-       void ingresoNum(float *a, float *b);
+ 
  float num1,num2;
     
         do {
@@ -38,7 +44,7 @@ void MenuReales(){
         printf("1.Suma \n");
         printf("2.Resta\n");
         printf("3.Multiplicacion\n");
-        printf("4.División\n");
+        printf("4.DivisiÃ³n\n");
         printf("5.Potencia\n");
         printf("6.Raiz\n");
         printf("0. Salir\n");
@@ -89,13 +95,7 @@ void MenuReales(){
     
 }
 
-void ingresoNum(float *a,float *b){
-    float num1,num2;
-  printf("Ingrese el primer numero de la operacion:");
-  scanf("%f",a);
-  printf("Ingrese el segundo numero de la operacion:");
-  scanf("%f",b);
-}
+
 
 
 //JP y LELY
@@ -160,8 +160,8 @@ void multiplicarPorEscalar() {
     float matriz[filas][columnas];  
 
     ingresarMatriz((float *)matriz, filas, columnas);
-    /*convertí la matriz 2D a un puntero, pasala a la función ingresarMatriz y 
-    dentro de esa función manejala como si fuera 2D usando punteros*/
+    /*convertÃ­ la matriz 2D a un puntero, pasala a la funciÃ³n ingresarMatriz y 
+    dentro de esa funciÃ³n manejala como si fuera 2D usando punteros*/
 
     printf("ingrese el escalar: ");
     scanf("%f", &escalar);
@@ -308,7 +308,7 @@ void calcularDeterminante() {
     float matriz[n][n];
     ingresarMatriz((float *)matriz, n, n);
     /*converti la matriz 2D a un puntero, pasala a la funcion ingresarMatriz y 
-    dentro de esa función manejala como si fuera 2D usando punteros*/
+    dentro de esa funciÃ³n manejala como si fuera 2D usando punteros*/
     float det = determinante((float *)matriz, n);
     printf("el determinante es: %.2f\n", det);
 }
@@ -426,7 +426,7 @@ float resolverEcuaciones2y3() {
     	
 		if (det == 0) 
 		{
-        printf("El sistema no tiene solución única.\n");
+        printf("El sistema no tiene soluciÃ³n Ãºnica.\n");
         
     	}
     	
@@ -452,7 +452,7 @@ float resolverEcuaciones2y3() {
 		float det = determinante3x3(matriz);
 		if (det == 0) 
 		{
-        printf("El sistema no tiene solución única.\n");
+        printf("El sistema no tiene soluciÃ³n Ãºnica.\n");
     	}
     	
     	float mX[3][3], mY[3][3], mZ[3][3];
