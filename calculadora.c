@@ -391,7 +391,6 @@ void multiplicarMatrizVector() {
     for (int i = 0; i < filas; i++) {
         printf("%.2f ", resultado[i]);
     }
-}
 void obtenerSubmatriz(float *matriz, float *submatriz, int n, int filaExcluir, int colExcluir) {
     int subi = 0;
     for (int i = 0; i < n; i++) {
@@ -428,25 +427,136 @@ float determinante(float *matriz, int n) {
     return det;
 }
 
-
 void calcularDeterminante() {
-    int filas, columnas;
-    printf("ingrese cantidad de filas: ");
-    scanf("%d", &filas);
-    printf("ingrese cantidad de columnas: ");
-    scanf("%d", &columnas);
+    int n;
 
-    if (filas != columnas) {
-        printf("error: el determinante solo se puede calcular en matrices cuadradas\n");
+    printf("Ingrese el tamaño de la matriz (2, 3 o 4): ");
+    scanf("%d", &n);
+
+    if (n < 2 || n > 4) {
+        printf("Solo se permite matriz de tamaño 2x2, 3x3 o 4x4.\n");
         return;
     }
 
-    int n = filas;
     float matriz[n][n];
+    printf("Ingrese los valores de la matriz:\n");
     ingresarMatriz((float *)matriz, n, n);
+
     float det = determinante((float *)matriz, n);
-    printf("el determinante es: %.2f\n", det);
+    printf("El determinante de la matriz es: %.2f\n", det);
 }
+
+
+void adjunta(float *matriz, float *adjunta, int n) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            float submatriz[(n - 1) * (n - 1)];
+            obtenerSubmatriz(matriz, submatriz, n, i, j);
+
+            float signo = ((i + j) % 2 == 0) ? 1 : -1;
+            adjunta[j * n + i] = signo * determinante(submatriz, n - 1); // transpuesta implícita
+        }
+    }
+}
+
+
+bool calcularInversa(float *matriz, float *inversa, int n) {
+    float det = determinante(matriz, n);
+    if (det == 0) {
+        return false; 
+    }
+
+    float adj[n * n];
+    adjunta(matriz, adj, n);
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            inversa[i * n + j] = adj[i * n + j] / det;
+        }
+    }
+
+    return true; 
+}
+
+
+void inversaMatriz() {
+    int n;
+
+    printf("Ingrese el tamaño de la matriz (2, 3 o 4): ");
+    scanf("%d", &n);
+
+    if (n < 2 || n > 4) {
+        printf("Solo se permite matriz de tamaño 2x2, 3x3 o 4x4.\n");
+        return;
+    }
+
+    float matriz[n][n];
+    float inversa[n][n];
+
+    printf("Ingrese los valores de la matriz:\n");
+    ingresarMatriz((float *)matriz, n, n);
+
+    if (!calcularInversa((float *)matriz, (float *)inversa, n)) {
+        printf("La matriz no tiene inversa (determinante = 0).\n");
+        return;
+    }
+
+    printf("La matriz inversa es:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%.2f ", inversa[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
+void dividirMatrices() {
+    int n;
+    printf("Ingrese el tamaño de las matrices cuadradas (2, 3 o 4): ");
+    scanf("%d", &n);
+
+    if (n < 2 || n > 4) {
+        printf("Solo se permite matriz de tamaño 2x2, 3x3 o 4x4.\n");
+        return;
+    }
+
+    float matrizA[n][n];
+    float matrizB[n][n];
+    float resultado[n][n];
+    float inversaB[n][n];
+
+    printf("Ingrese los valores de la primera matriz (A):\n");
+    ingresarMatriz((float *)matrizA, n, n);
+
+    printf("Ingrese los valores de la segunda matriz (B):\n");
+    ingresarMatriz((float *)matrizB, n, n);
+
+    if (!calcularInversa((float *)matrizB, (float *)inversaB, n)) {
+        printf("La matriz B no tiene inversa (determinante = 0).\n");
+        return;
+    }
+
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            resultado[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                resultado[i][j] += matrizA[i][k] * inversaB[k][j];
+            }
+        }
+    }
+
+    printf("El resultado de A / B es:\n");
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            printf("%.2f ", resultado[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+
 
 void MenuMatrices(){
 
@@ -484,6 +594,12 @@ void MenuMatrices(){
                     
             case 6:
                     calcularDeterminante();
+                    break;
+            case 7:
+                    inversaMatriz();
+                    break;
+            case 8: 
+                    dividirMatrices();
                     break;
             case 0:
                 printf("Saliendo...\n");
