@@ -218,8 +218,9 @@ void MenuReales(){
                 printf("%.2f ^ %.2f = %.2f\n", num1, num2, pow(num1, num2));
 
                 break;
-            case 6:{
-		    
+            case 6:
+				{
+				
             	int raiz;
                 printf("Ingrese el numero del que desea saber la Raiz: ");
                 scanf("%f",&num1);
@@ -227,7 +228,7 @@ void MenuReales(){
                 scanf("%d",&raiz);
                 printf("La raiz %d de %.2f =  %.2f ",raiz,num1,pow(num1,(1.0/raiz)));
                 break;
-	    }
+            }
             case 0:
                 printf("Saliendo...\n");
                 break;
@@ -262,12 +263,14 @@ void sumaMatrices() {
     ingresarMatriz((float *)matriz1, tamano, tamano);
     ingresarMatriz((float *)matriz2, tamano, tamano);
 
-    printf("resultado:");
+    printf("resultado:\n");
     for (int i = 0; i < tamano; i++) {
+    	
         for (int j = 0; j < tamano; j++) {
             matrizResultado[i][j] = matriz1[i][j] + matriz2[i][j];
             printf("%.2f ", matrizResultado[i][j]);
         }
+        printf("\n");
     }
 }
 void restaMatrices() {
@@ -283,12 +286,13 @@ void restaMatrices() {
     ingresarMatriz((float *)matriz1, tamano, tamano);
     ingresarMatriz((float *)matriz2, tamano, tamano);
 
-    printf("resultado:");
+    printf("resultado:\n");
     for (int i = 0; i < tamano; i++) {
         for (int j = 0; j < tamano; j++) {
             matrizResultado[i][j] = matriz1[i][j] - matriz2[i][j];
             printf("%.2f ", matrizResultado[i][j]);
         }
+        printf("\n");
     }
 }
 void multiplicarPorEscalar() {
@@ -355,11 +359,12 @@ void multiplicarMatrices() {
         }
     }
 
-    printf("Resultado:");
+    printf("Resultado:\n");
     for (int i = 0; i < filas1; i++) {
         for (int j = 0; j < columnas2; j++) {
             printf("%.2f ", resultado[i][j]);
         }
+        printf("\n");
     }
 }
 
@@ -390,9 +395,9 @@ void multiplicarMatrizVector() {
             resultado[i] += matriz[i][j] * vector[j];
         }
     }
-    printf("Resultado:");
+    printf("Resultado:\n");
     for (int i = 0; i < filas; i++) {
-        printf("%.2f ", resultado[i]);
+        printf("%[.2f] \n", resultado[i]);
     }
 }
 void obtenerSubmatriz(float *matriz, float *submatriz, int n, int filaExcluir, int colExcluir) {
