@@ -218,14 +218,16 @@ void MenuReales(){
                 printf("%.2f ^ %.2f = %.2f\n", num1, num2, pow(num1, num2));
 
                 break;
-            case 6:
-            int raiz;
+            case 6:{
+		    
+            	int raiz;
                 printf("Ingrese el numero del que desea saber la Raiz: ");
                 scanf("%f",&num1);
                 printf("Ingrese cual es la raiz de %.2f que desea calcular: ",num1);
                 scanf("%d",&raiz);
                 printf("La raiz %d de %.2f =  %.2f ",raiz,num1,pow(num1,(1.0/raiz)));
                 break;
+	    }
             case 0:
                 printf("Saliendo...\n");
                 break;
